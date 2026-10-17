@@ -139,6 +139,8 @@ body{
 .iacts button.go.on{background:#EAF3EE;border-color:#B6D6C3;color:var(--green)}
 
 .foot{text-align:center;font-size:.74em;color:var(--ink3);line-height:1.9;padding:6px 8px}
+.foot a{color:var(--ink2);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px;word-break:break-all}
+.foot a:active{color:var(--red);border-bottom-color:var(--red)}
 .empty{text-align:center;color:var(--ink3);font-size:.82em;padding:22px 0}
 @media(max-width:420px){
   .brand{font-size:1.75em}
@@ -199,7 +201,8 @@ body{
   </section>
 
   <div class="foot">
-    有店关门 / 新店推荐，欢迎反馈<br>
+    有店关门 / 新店推荐 / 价格有出入，欢迎邮件反馈<br>
+    <a id="mlink" href="#">邮箱载入中…</a><br>
     <span style="opacity:.8">—— by 青100色</span>
   </div>
 </div>
@@ -422,6 +425,14 @@ function tg(n){LS.gone.has(n)?LS.gone.delete(n):LS.gone.add(n);saveLS();renderLi
 function tb(n){LS.black.has(n)?LS.black.delete(n):LS.black.add(n);saveLS();apply();renderList();}
 
 buildChips(); buildTabs(); buildSort(); apply();
+
+/* 反馈邮箱：拼接生成，避免被爬虫抓到明文 */
+(function(){
+  var a=document.getElementById('mlink'); if(!a) return;
+  var e='test'+'_12025'+'@'+'163'+'.com';
+  a.href='mailto:'+e+'?subject='+encodeURIComponent('今天吃啥·西安 店铺反馈');
+  a.textContent=e;
+})();
 </script>
 </body>
 </html>
